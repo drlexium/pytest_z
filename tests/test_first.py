@@ -38,7 +38,6 @@ class TestFirstPy:
                 else:
                     with allure.step(f"FAIL: Статус ссылки {link} равен {status}"):
                         print(f"\033[31m FAIL: Статус ссылки {link} равен {status} \033[0m")
-            Page(i).make_screenshot('screen04')
 
         with allure.step(f"Открыть каждую ссылку и проверить адресную строку браузера, что открывается нужная ссылка"):
             for link in links:
@@ -56,4 +55,3 @@ class TestFirstPy:
                 else:
                     with allure.step(f"FAIL: Адрес страницы \"{url}\" НЕ совпадает со ссылкой: \"{link}\""):
                         print(f"\033[31m FAIL: Адрес страницы \"{url}\" НЕ совпадает со ссылкой: \"{link}\" \033[0m")
-            Page(i).make_screenshot('screen05')
