@@ -1,6 +1,3 @@
-from allure_commons.types import AttachmentType
-
-import allure
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -23,7 +20,6 @@ def i():
                               chrome_options=options)
     driver.maximize_window()
     yield driver
-    allure.attach('screenshot', driver.get_screenshot_as_png(), type=AttachmentType.PNG)
     driver.close()
     driver.quit()
 

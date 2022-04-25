@@ -10,12 +10,18 @@ class TestFirstPy:
     def test_see_page(self, i):
         with allure.step(f"Перейти на страницу https://www.mos.ru/"):
             i.get('https://www.mos.ru/')
+            Page(i).make_screenshot('screen01')
 
         with allure.step(f"Проверить наличие шапки."):
             i.find_element(By.ID, "mos-header")
+            assert True, i.is_element_visible(By.ID, "mos-header")
+            Page(i).make_screenshot('screen02')
 
         with allure.step(f"Проверить наличие подвала."):
             i.find_element(By.ID, "mos_footer")
+            Page(i).scroll_down()
+            assert True, i.is_element_visible(By.ID, "mos_footer")
+            Page(i).make_screenshot('screen03')
 
     def test_page_links(self, i):
         with allure.step(f"Вытащить все ссылки со страницы и проверить их на 200 (280 шт.)"):
@@ -28,10 +34,11 @@ class TestFirstPy:
                 status = Page(i).get_status_code(link)
                 if status == 200:
                     with allure.step(f"PASSED: Статус ссылки {link} равен 200"):
-                        print(f"\033[32m Статус ссылки {link} равен 200 \033[0m")
+                        print(f"\033[32m PASSED: Статус ссылки {link} равен 200 \033[0m")
                 else:
                     with allure.step(f"FAIL: Статус ссылки {link} равен {status}"):
-                        print(f"\033[31m Статус ссылки {link} равен {status} \033[0m")
+                        print(f"\033[31m FAIL: Статус ссылки {link} равен {status} \033[0m")
+            Page(i).make_screenshot('screen04')
 
         with allure.step(f"Открыть каждую ссылку и проверить адресную строку браузера, что открывается нужная ссылка"):
             for link in links:
@@ -45,7 +52,8 @@ class TestFirstPy:
                 # Проверяю соответствие адреса страницы ссылке на страницу
                 if link == url:
                     with allure.step(f"PASSED: Адрес страницы \"{url}\" совпадает со ссылкой: \"{link}\""):
-                        print(f"\033[32m Адрес страницы \"{url}\" совпадает со ссылкой: \"{link}\" \033[0m")
+                        print(f"\033[32m PASSED: Адрес страницы \"{url}\" совпадает со ссылкой: \"{link}\" \033[0m")
                 else:
                     with allure.step(f"FAIL: Адрес страницы \"{url}\" НЕ совпадает со ссылкой: \"{link}\""):
-                        print(f"\033[31m Адрес страницы \"{url}\" НЕ совпадает со ссылкой: \"{link}\" \033[0m")
+                        print(f"\033[31m FAIL: Адрес страницы \"{url}\" НЕ совпадает со ссылкой: \"{link}\" \033[0m")
+            Page(i).make_screenshot('screen05')
