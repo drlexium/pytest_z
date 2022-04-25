@@ -31,8 +31,4 @@ def setup():
     driver.quit()
 
 
-@pytest.fixture()
-def waitElementById(setup, id, time=60):
-    wait = WebDriverWait(setup, time)
-    wait.until(EC.visibility_of_element_located((By.ID, id)))
-    pass
+
