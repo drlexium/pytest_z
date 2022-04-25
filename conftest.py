@@ -8,8 +8,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 
-@pytest.fixture(scope='class', autouse=True)
-def setup():
+@pytest.fixture(scope='class')
+def i():
     options = Options()
     options.add_experimental_option("prefs", {
         "download.default_directory": r"c:\selenium_browsers\download",
