@@ -1,5 +1,6 @@
 import pytest
 from selenium import webdriver
+import chromedriver_binary
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
