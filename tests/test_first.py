@@ -39,7 +39,7 @@ class TestFirstPy:
                 url = Page(i).get_current_url()
 
                 # Избегаю ошибки, если url и link отличаются только "/" на конце
-                link = Page(i).remove_final_slash(links)
+                link = Page(i).remove_final_slash(link)
                 url = Page(i).remove_final_slash(url)
 
                 # Проверяю соответствие адреса страницы ссылке на страницу
