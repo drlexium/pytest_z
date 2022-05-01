@@ -2,7 +2,7 @@ import allure
 import requests
 from allure_commons.types import AttachmentType
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
 
@@ -33,7 +33,7 @@ class Page:
         :return:
         """
         # self.i.get()
-        return WebDriverWait(self.i, time).until(EC.visibility_of_element_located((By.ID, element_id)))
+        return WebDriverWait(self.i, time).until(ec.visibility_of_element_located((By.ID, element_id)))
 
     def get_all_links(self):
         """
@@ -46,7 +46,8 @@ class Page:
         print("\nНайдено " + len(elements).__str__() + " ссылок.")
         return [elem.get_attribute('href') for elem in elements]
 
-    def get_status_code(self, url):
+    @staticmethod
+    def get_status_code(url):
         """
         Получить код статуса страницы по ссылке
         :param url: ссылка на страницу
@@ -54,7 +55,8 @@ class Page:
         """
         return requests.get(url).status_code
 
-    def remove_final_slash(self, url):
+    @staticmethod
+    def remove_final_slash(url):
         """
         Удаление слеша в конце строки если он там есть
         :param url: строка для обработки

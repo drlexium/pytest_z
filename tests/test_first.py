@@ -1,5 +1,4 @@
 import allure
-from selenium.webdriver.common.by import By
 from src.page import Page
 from src.mos import Mos
 
